@@ -16,3 +16,61 @@ def add_item(name, description, price, items):
 # Example usage
 items = [] # list to hold the items
 add_item("Apple", "A juicy fruit", 0.99, items) # add a new item
+
+
+items = [
+    {"id": 1, "name": "item1", "price": 10.0},
+    {"id": 2, "name": "item2", "price": 20.0},
+    {"id": 3, "name": "item3", "price": 30.0},
+]
+
+# function to find item by id
+def find_item_by_id(id):
+    for item in items:
+        if item["id"] == id:
+            return item
+   
+
+# Define a dictionary with initial information
+item = {
+    "name": "Example Item",
+    "price": 10.0,
+    "quantity": 5
+}
+
+# Update the item with new information
+item["price"] = 15.0
+item["quantity"] = 10
+
+# Print the updated item
+print(item)
+
+
+import os
+
+# specify the file path
+file_path = "path/to/your/file.txt"
+
+# check if the file exists
+if os.path.exists(file_path):
+    # delete the file
+    os.remove(file_path)
+    print(f"{file_path} has been deleted.")
+else:
+    print(f"{file_path} does not exist.")
+
+
+import re
+
+items = [    {"name": "Apple", "description": "A fruit with a red or green skin."},    {"name": "Orange", "description": "A citrus fruit with a thick, pitted skin."},    {"name": "Banana", "description": "A curved fruit with a yellow skin."}]
+
+def search_items(query):
+    results = []
+    for item in items:
+        name_match = re.search(query, item["name"], re.IGNORECASE)
+        desc_match = re.search(query, item["description"], re.IGNORECASE)
+        if name_match or desc_match:
+            results.append(item)
+    return results
+results = search_items("name")
+print(results)
