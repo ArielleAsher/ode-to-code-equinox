@@ -1,0 +1,11 @@
+# create a dictionary of items with their respective stock levels
+inventory = {'item1': 10, 'item2': 5, 'item3': 15, 'item4': 20}
+
+# create a dictionary of minimum stock levels for each item
+min_stock_levels = {'item1': 5, 'item2': 3, 'item3': 10, 'item4': 15}
+
+# iterate over the items in the inventory and check if their stock levels have fallen below the minimum stock level
+for item, stock_level in inventory.items():
+    min_stock_level = min_stock_levels[item]
+    if stock_level < min_stock_level:
+        print(f"ALERT: The stock level for {item} is below the minimum stock level of {min_stock_level}!")
