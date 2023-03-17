@@ -1,0 +1,48 @@
+# Create a dictionary to store customer information
+customers = {}
+
+# Function to add sales to a customer's record
+def add_sale(customer_name, sale_amount):
+    if customer_name in customers:
+        customers[customer_name]["sales"].append(sale_amount)
+    else:
+        customers[customer_name] = {"sales": [sale_amount]}
+    
+# Example usage
+add_sale("Alice", 100)
+add_sale("Bob", 50)
+add_sale("Alice", 200)
+
+# Print the customer information
+for customer_name, customer_data in customers.items():
+    print(f"{customer_name}: Total Sales - {sum(customer_data['sales'])}, Sales Record - {customer_data['sales']}")
+
+
+import csv
+import datetime
+
+# Set start and end dates for the report period
+start_date = datetime.date(2023, 1, 1)
+end_date = datetime.date(2023, 3, 15)
+
+# Read the sales data from a CSV file
+with open('sales_data.csv', 'r') as csvfile:
+    sales_data = csv.reader(csvfile)
+    next(sales_data)  # Skip the header row
+
+    # Initialize variables for the report
+    total_sales = 0
+    num_sales = 0
+
+    # Loop through the sales data and calculate the total sales for the period
+    for row in sales_data:
+        sale_date = datetime.datetime.strptime(row[0], '%Y-%m-%d').date()
+        if start_date <= sale_date <= end_date:
+            sale_amount = float(row[1])
+            total_sales += sale_amount
+            num_sales += 1
+
+    # Print the sales report for the period
+    print('Sales report for period {} to {}:'.format(start_date, end_date))
+    print('Number of sales: {}'.format(num_sales))
+    print('Total sales: ${:.2f}'.format(total_sales))
