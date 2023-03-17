@@ -1,0 +1,27 @@
+# Create an empty dictionary to store vendor information
+vendors = {}
+
+# Define a function to add a new vendor to the dictionary
+def add_vendor(name, contact_info):
+    vendors[name] = contact_info
+
+# Define a function to remove a vendor from the dictionary
+def remove_vendor(name):
+    if name in vendors:
+        del vendors[name]
+    else:
+        print("Vendor not found")
+
+# Define a function to print all vendors in the dictionary
+def print_vendors():
+    print("Vendor List:")
+    for name, contact_info in vendors.items():
+        print(name + ": " + contact_info)
+
+# Test the functions
+add_vendor("Acme Corporation", "555-1234")
+add_vendor("XYZ Enterprises", "555-5678")
+print_vendors()
+
+remove_vendor("Acme Corporation")
+print_vendors()
