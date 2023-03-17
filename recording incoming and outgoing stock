@@ -1,0 +1,33 @@
+import csv
+from datetime import datetime
+
+# Function to record incoming stock
+def record_incoming_stock(product, quantity, price):
+    incoming_stock_file = 'incoming_stock.csv'
+    current_time = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+    with open(incoming_stock_file, 'a', newline='') as file:
+        writer = csv.writer(file)
+        writer.writerow([current_time, product, quantity, price])
+
+# Function to record outgoing stock
+def record_outgoing_stock(product, quantity, price):
+    outgoing_stock_file = 'outgoing_stock.csv'
+    current_time = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+    with open(outgoing_stock_file, 'a', newline='') as file:
+        writer = csv.writer(file)
+        writer.writerow([current_time, product, quantity, price])
+
+# Example usage
+record_incoming_stock('Apples', 50, 1.50)
+record_outgoing_stock('Apples', 20, 1.50)
+
+
+This code defines two functions - record_incoming_stock and record_outgoing_stock - that record incoming and outgoing stock respectively. Each function takes the 
+product name, quantity, and price as input, and appends a new row to the appropriate CSV file with the current date and time, product name, quantity, and price.
+
+In the example usage section, we record 50 units of Apples as incoming stock and 20 units of Apples as outgoing stock. These values are stored in separate CSV files 
+named incoming_stock.csv and outgoing_stock.csv.
+
+You can modify this code to include additional information such as the location or source of the stock, and to perform validation on the input values to ensure that 
+they are valid before recording them. Additionally, you can implement a more complex inventory management system that includes features such as real-time inventory 
+tracking and alerts for low stock levels.
