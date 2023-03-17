@@ -1,0 +1,31 @@
+class Vendor:
+    def __init__(self, name, address, phone):
+        self.name = name
+        self.address = address
+        self.phone = phone
+
+class VendorManager:
+    def __init__(self):
+        self.vendors = []
+
+    def add_vendor(self, vendor):
+        self.vendors.append(vendor)
+
+    def remove_vendor(self, vendor_name):
+        for vendor in self.vendors:
+            if vendor.name == vendor_name:
+                self.vendors.remove(vendor)
+                print(f"{vendor_name} has been removed from the vendor list.")
+                return
+        print(f"{vendor_name} was not found in the vendor list.")
+
+    def search_vendor(self, vendor_name):
+        for vendor in self.vendors:
+            if vendor.name == vendor_name:
+                print(f"{vendor_name} was found at {vendor.address}. Contact number: {vendor.phone}")
+                return
+        print(f"{vendor_name} was not found in the vendor list.")
+
+    def show_vendors(self):
+        for vendor in self.vendors:
+            print(f"{vendor.name} at {vendor.address}. Contact number: {vendor.phone}")
