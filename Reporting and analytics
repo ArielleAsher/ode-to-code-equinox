@@ -1,0 +1,51 @@
+import csv
+
+# Function to calculate total inventory value
+def calculate_inventory_value():
+    inventory_file = 'inventory.csv'
+    with open(inventory_file, 'r') as file:
+        reader = csv.reader(file)
+        next(reader)
+        total_value = 0
+        for row in reader:
+            total_value += float(row[1]) * float(row[2])
+        return total_value
+
+# Function to calculate total purchase value
+def calculate_purchase_value():
+    purchase_file = 'purchase.csv'
+    with open(purchase_file, 'r') as file:
+        reader = csv.reader(file)
+        next(reader)
+        total_value = 0
+        for row in reader:
+            total_value += float(row[1]) * float(row[2])
+        return total_value
+
+# Function to calculate total sales value
+def calculate_sales_value():
+    sales_file = 'sales.csv'
+    with open(sales_file, 'r') as file:
+        reader = csv.reader(file)
+        next(reader)
+        total_value = 0
+        for row in reader:
+            total_value += float(row[1]) * float(row[2])
+        return total_value
+
+# Function to generate report
+def generate_report():
+    print('Inventory Report')
+    print('-------------------------')
+    print(f'Total Inventory Value: ${calculate_inventory_value():,.2f}')
+    print(f'Total Purchase Value: ${calculate_purchase_value():,.2f}')
+    print(f'Total Sales Value: ${calculate_sales_value():,.2f}')
+    print(f'Profit: ${(calculate_sales_value()-calculate_purchase_value()):,.2f}')
+
+# Call the generate_report function
+generate_report()
+
+
+
+his code assumes that there are three CSV files - inventory.csv that contains the current inventory levels, purchase.csv that contains information about all the purchases made, and sales.csv that contains information about all the sales made. The functions calculate_inventory_value, calculate_purchase_value, and calculate_sales_value read the respective CSV files and calculate the total value of the inventory, purchases, and sales respectively. The generate_report function calls these functions and generates a report that shows the total inventory value, total purchase value, total sales value, and the profit made by subtracting the purchase value from the sales value.
+You can modify this code to generate more complex reports, such as reports on the best-selling products, low inventory levels, etc. by using additional functions that read and analyze the CSV files.
