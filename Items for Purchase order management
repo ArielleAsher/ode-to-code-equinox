@@ -1,0 +1,18 @@
+# Define a class for the item
+class Item:
+    def __init__(self, name, description, price):
+        self.name = name
+        self.description = description
+        self.price = price
+        
+# Define a function to add a new item
+def add_item(name, description, price, items):
+    # Create a new instance of the Item class
+    new_item = Item(name, description, price)
+    # Add the new item to the items list
+    items.append(new_item)
+    print(f"{name} has been added to the system with a price of {price}.")
+
+# Example usage
+items = [] # list to hold the items
+add_item("Apple", "A juicy fruit", 0.99, items) # add a new item
