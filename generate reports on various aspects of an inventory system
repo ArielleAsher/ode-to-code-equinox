@@ -1,0 +1,91 @@
+import csv
+from datetime import datetime
+
+# Define the inventory file name
+INVENTORY_FILE = "inventory.csv"
+
+# Define the sales file name
+SALES_FILE = "sales.csv"
+
+# Define the purchase order file name
+PURCHASE_ORDER_FILE = "purchase_orders.csv"
+
+# Load inventory data from the file
+def load_inventory():
+    with open(INVENTORY_FILE, "r") as file:
+        reader = csv.DictReader(file)
+        return [row for row in reader]
+
+# Load sales data from the file
+def load_sales():
+    with open(SALES_FILE, "r") as file:
+        reader = csv.DictReader(file)
+        return [row for row in reader]
+
+# Load purchase order data from the file
+def load_purchase_orders():
+    with open(PURCHASE_ORDER_FILE, "r") as file:
+        reader = csv.DictReader(file)
+        return [row for row in reader]
+
+# Calculate the total value of the inventory
+def calculate_inventory_value():
+    inventory = load_inventory()
+    total_value = 0
+    for item in inventory:
+        total_value += int(item["quantity"]) * float(item["price"])
+    return total_value
+
+# Calculate the total sales revenue
+def calculate_sales_revenue():
+    sales = load_sales()
+    total_revenue = 0
+    for sale in sales:
+        total_revenue += int(sale["quantity"]) * float(sale["price"])
+    return total_revenue
+
+# Calculate the total purchase orders
+def calculate_purchase_orders():
+    purchase_orders = load_purchase_orders()
+    total_orders = 0
+    for order in purchase_orders:
+        total_orders += int(order["quantity"])
+    return total_orders
+
+# Generate an inventory report
+def generate_inventory_report():
+    inventory = load_inventory()
+    print("INVENTORY REPORT")
+    print("Date:", datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
+    print("Total Items:", len(inventory))
+    print("Total Value:", calculate_inventory_value())
+
+# Generate a sales report
+def generate_sales_report():
+    sales = load_sales()
+    print("SALES REPORT")
+    print("Date:", datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
+    print("Total Sales:", len(sales))
+    print("Total Revenue:", calculate_sales_revenue())
+
+# Generate a purchase order report
+def generate_purchase_order_report():
+    purchase_orders = load_purchase_orders()
+    print("PURCHASE ORDER REPORT")
+    print("Date:", datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
+    print("Total Orders:", len(purchase_orders))
+    print("Total Quantity:", calculate_purchase_orders())
+
+
+
+
+This code defines a few functions for generating reports on various aspects of an inventory system. Here's a brief overview of what each function does:
+• load_inventory(): Reads the inventory data from the CSV file and returns it as a list of dictionaries.
+• load_sales(): Reads the sales data from the CSV file and returns it as a list of dictionaries.
+• load_purchase_orders(): Reads the purchase order data from the CSV file and returns it as a list of dictionaries.
+• calculate_inventory_value(): Calculates the total value of the inventory by multiplying the quantity of each item by its price.
+• calculate_sales_revenue(): Calculates the total revenue from sales by multiplying the quantity of each sale by its price.
+• calculate_purchase_orders(): Calculates the total quantity of items on purchase orders.
+• generate_inventory_report(): Prints a report on the current inventory levels and value.
+• generate_sales_report(): Prints
+
